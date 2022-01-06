@@ -33,18 +33,18 @@
 
     <TextView
         android:id="@+id/resultTextView"
-        app:layout_constraintBottom_toTopOf="@id/keypadTableLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="0dp"
-        android:gravity="end"
-        android:textSize="20sp"
-        android:textColor="#aaaaaa"
-        tools:text="24"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:layout_height="wrap_content" />
+        android:gravity="end"
+        android:textColor="#aaaaaa"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/keypadTableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="24" />
 
     <TableLayout
         android:id="@+id/keypadTableLayout"
@@ -133,6 +133,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="8"
                 android:textColor="@color/textColor"
@@ -185,6 +186,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="5"
                 android:textColor="@color/textColor"
@@ -237,6 +239,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="2"
                 android:textColor="@color/textColor"
@@ -288,6 +291,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="0"
                 android:textColor="@color/textColor"
@@ -321,5 +325,69 @@
 
 
     </TableLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/historyLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/keypadTableLayout"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/closeButton"
+            android:onClick="closeHistoryButtonClicked"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:text="닫기"
+            android:textColor="@color/black"
+            android:stateListAnimator="@null"
+            android:background="@null"/>
+
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/closeButton"
+            app:layout_constraintBottom_toBottomOf="@id/historyClearButton">
+
+            <LinearLayout
+                android:id="@+id/historyLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/historyClearButton"
+            android:text="계산 기록 삭제"
+            android:onClick="historyClearButtonClicked"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:stateListAnimator="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="38dp"
+            android:layout_marginStart="47dp"
+            android:layout_marginEnd="47dp"
+            android:background="@drawable/button_background_green"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
